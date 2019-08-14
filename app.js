@@ -9,6 +9,8 @@ var room = require('./models/room/roomModel')
 var roomCategory = require('./models/room/roomCategoryModel')
 var event = require('./models/event/eventModel')
 var eventCategory = require('./models/event/eventCategoryModel')
+var table = require('./models/table/tableModel')
+var tableCategory = require('./models/table/tableCategoryModel')
 
 var indexRouter = require('./routes/index')
 
