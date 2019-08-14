@@ -1,7 +1,7 @@
 'use strict'
-var menuController = require('../controllers/menuController')
-var orderController = require('../controllers/orderController')
-var roomController = require('../controllers/roomController')
+var menuController = require('../controllers/menu/menuController')
+var orderController = require('../controllers/order/orderController')
+var roomController = require('../controllers/room/roomController')
 var express = require('express');
 var multerConfig = require('../config/multer')
 var router = express.Router();

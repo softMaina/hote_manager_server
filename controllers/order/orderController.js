@@ -1,4 +1,4 @@
-const order = require('../models/orderModel')
+const order = require('../../models/order/orderModel')
 
 const payment_method = ['pay_on_delivery', 'mpesa']
 class OrderController{
