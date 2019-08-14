@@ -1,5 +1,5 @@
-var eventCategory = require('../models/eventCategoryModel')
-var event = require('../models/eventModel')
+var eventCategory = require('../../models/event/eventCategoryModel')
+var event = require('../../models/event/eventModel')
 
 class Event{
     createEvent(req, res, next){

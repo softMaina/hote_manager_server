@@ -7,6 +7,8 @@ var multer = require('multer')
 var mongoose = require('mongoose');
 var room = require('./models/room/roomModel');
 var roomCategory = require('./models/room/roomCategoryModel');
+var event = require('./models/event/eventModel');
+var eventCategory = require('./models/event/eventCategoryModel');
 
 var indexRouter = require('./routes/index');
 
