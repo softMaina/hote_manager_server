@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "test": "mocha --require babel-register tests/*.js --exit",
     "start": "nodemon ./bin/www"
   },
   "dependencies": {

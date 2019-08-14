@@ -1,5 +1,5 @@
-var tableModel = require('../models/tableModel');
-var tableCategory = require('../models/eventCategoryModel')
+var tableModel = require('../../models/table/tableModel');
+var tableCategory = require('../../models/event/eventCategoryModel')
 class Table{
     createTable(){
         

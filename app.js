@@ -5,8 +5,8 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var multer = require('multer')
 var mongoose = require('mongoose');
-var room = require('./models/roomModel');
-var roomCategory = require('./models/roomCategoryModel');
+var room = require('./models/room/roomModel');
+var roomCategory = require('./models/room/roomCategoryModel');
 
 var indexRouter = require('./routes/index');
 
