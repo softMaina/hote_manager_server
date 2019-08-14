@@ -5,10 +5,11 @@ class Event {
   createEvent (req, res, next) {
     var eventsave = new event(req.body)
     eventsave.save(function (err, response) {
-      if (err) { 
-        res.statusMessage = "An error occured"
-        return res.json(err) }
-      res.statusMessage="Event created successfully"
+      if (err) {
+        res.statusMessage = 'An error occured'
+        return res.json(err)
+      }
+      res.statusMessage = 'Event created successfully'
       return res.status(201).json(response)
     })
   }
@@ -16,45 +17,46 @@ class Event {
   createEventCategory (req, res, next) {
     var category = new eventCategory(req.body)
     category.save(function (err, response) {
-      if (err) { 
-        res.statusMessage = "An error occurred"
-        return res.json(err) }
-      res.statusMessage = "Event Category created successfully"
+      if (err) {
+        res.statusMessage = 'An error occurred'
+        return res.json(err)
+      }
+      res.statusMessage = 'Event Category created successfully'
       return res.status(201).json(response)
     })
   }
 
-  getEventCategories(req, res, next){
-    eventCategory.find({}).then((err, response)=>{
-      if(err){
-        res.statusMessage = "An error occured"
+  getEventCategories (req, res, next) {
+    eventCategory.find({}).then((err, response) => {
+      if (err) {
+        res.statusMessage = 'An error occured'
         return res.json(err)
       }
-      res.statusMessage = "Fetch was successful"
+      res.statusMessage = 'Fetch was successful'
       return res.status(200).json(response)
     })
   }
 
-  updateEventCategory(req,res,next){
-    let update = req.body
-    let filter = {_id:req.params.id}
-    eventCategory.findOneAndUpdate(filter, update, {new:true},function(error, response){
-      if(error){
-        res.statusMessage = "Update encountered an error"
+  updateEventCategory (req, res, next) {
+    const update = req.body
+    const filter = { _id: req.params.id }
+    eventCategory.findOneAndUpdate(filter, update, { new: true }, function (error, response) {
+      if (error) {
+        res.statusMessage = 'Update encountered an error'
         return res.json(error)
       }
-      res.statusMessage = "Update successful"
+      res.statusMessage = 'Update successful'
       return res.status(202).json(response)
     })
   }
 
-  deleteEventCategory(req,res, next){
-    eventCategory.remove({_id:req.params.id}).then((err, response)=>{
-      if(err){
-        res.statusMessage = "An error occured"
+  deleteEventCategory (req, res, next) {
+    eventCategory.remove({ _id: req.params.id }).then((err, response) => {
+      if (err) {
+        res.statusMessage = 'An error occured'
         return res.json(err)
       }
-      res.statusMessage = "Item deleted successfully"
+      res.statusMessage = 'Item deleted successfully'
       return res.status(200).json(response)
     })
   }
@@ -68,36 +70,36 @@ class Event {
         as: 'events'
       }
     }]).then((err, response) => {
-      if (err) { 
-        res.statusMessage = "Fetch Failed"
-        return res.json(err) 
+      if (err) {
+        res.statusMessage = 'Fetch Failed'
+        return res.json(err)
       }
-      res.statusMessage ="Fetch was successfull"
+      res.statusMessage = 'Fetch was successfull'
       return res.status(200).json(response)
     })
   }
 
-  updateEvent(req, res, next){
-    let update = req.body
-    let filter = {_id:req.params.id}
-    event.findOneAndUpdate(filter, update, {new:true},function(error, response){
-      if(error){
-        res.statusMessage = "Update failed"
+  updateEvent (req, res, next) {
+    const update = req.body
+    const filter = { _id: req.params.id }
+    event.findOneAndUpdate(filter, update, { new: true }, function (error, response) {
+      if (error) {
+        res.statusMessage = 'Update failed'
         return res.status(302).json(error)
       }
-      res.statusMessage = "Update was successful"
+      res.statusMessage = 'Update was successful'
       return res.status(202).json(response)
     })
   }
 
-  deleteEvent(req, res, next){
-    event.remove({_id:req.params.id}).then((error, response)=>{
-      if(error){
-          res.statusMessage = "Delete Failed"
-          return res.status(409).json(error)
+  deleteEvent (req, res, next) {
+    event.remove({ _id: req.params.id }).then((error, response) => {
+      if (error) {
+        res.statusMessage = 'Delete Failed'
+        return res.status(409).json(error)
       }
-      res.statusMessage = "deleted successfuly";
-      return res.status(202).json(response) 
+      res.statusMessage = 'deleted successfuly'
+      return res.status(202).json(response)
     })
   }
 }
