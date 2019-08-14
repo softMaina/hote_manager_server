@@ -1,6 +1,6 @@
 'use strict'
-var roomCategories = require('../../models/roomCategoryModel')
-var Room = require('../../models/roomModel')
+var roomCategories = require('../../models/room/roomCategoryModel')
+var Room = require('../../models/room/roomModel')
 class roomController {
   createCategory (req, res, next) {
     var roomCategory = new roomCategories(req.body)
