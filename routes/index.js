@@ -16,9 +16,13 @@ router.post('/api/v1/order', orderController.createOrder)
 router.get('/orders', orderController.getOrders)
 
 // room routes
-router.get('/api/v1/rooms', roomController.getRooms)
+router.get('/api/v1/getRooms', roomController.getRooms)
 router.post('/api/v1/saveRoom', roomController.createRoom)
 router.post('/api/v1/saveRoomCategory', roomController.createCategory)
+router.put('/api/v1/updateRoom/:id',roomController.updateRoom)
+router.put('/api/v1/updateRoomCategory/:id', roomController.updateCategory)
+router.delete('/api/v1/deleteRoom/:id',roomController.deleteRoom)
+router.delete('/api/v1/deleteRoomCategory/:id',roomController.deleteCategory)
 
 // event routes
 router.get('/api/v1/getEvents',eventController.getEvents);
