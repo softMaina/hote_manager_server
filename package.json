@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "test": "mocha --require babel-register tests/*.js --exit",
-    "start": "nodemon ./bin/www"
+    "start": "node ./bin/www",
+    "serve": "nodemon ./bin/www"
   },
   "dependencies": {
     "babel-cli": "^6.26.0",
