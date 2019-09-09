@@ -3,9 +3,9 @@ var menu = require('../../models/menu/menuModel')
 var menucategory = require('../../models/menu/menuCategoryModel')
 var multer = require('multer')
 
-const upload = multer({
-  dest: '../public/images'
-})
+// const upload = multer({
+//   dest: '../public/images'
+// })
 
 class Menu {
   createMenu (req, res, next) {

@@ -13,8 +13,7 @@ var table = require('./models/table/tableModel')
 var tableCategory = require('./models/table/tableCategoryModel')
 
 var indexRouter = require('./routes/index')
-var nStatic = require('node-static');
-var fileServer = new nStatic.Server('public');
+
 
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/menu', { useNewUrlParser: true })
 
