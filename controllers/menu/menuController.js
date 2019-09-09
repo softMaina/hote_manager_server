@@ -9,12 +9,24 @@ const upload = multer({
 
 class Menu {
   createMenu (req, res, next) {
-    if (req.body.category_id !== '' || req.body.category_id === null) { var menumodel = new menu(req.body) }
-
-    menumodel.save(function (err, response) {
-      if (err) { return res.json(err) }
-      return res.status(201), res.json(response)
-    })
+  
+      var requestobj = JSON.parse(req.body.body)
+      var data = {
+          title:requestobj.title,
+          description: requestobj.description,
+          category_id: requestobj.category_id,
+          image:req.file.filename,
+          ingredients:requestobj.ingredients,
+          price:requestobj.price
+      }
+       var menumodel = new menu(data)
+       console.log(data);
+       menumodel.save(function (err, response) {
+        if (err) { return res.json(err) }
+        return res.status(201), res.json(response)
+      })
+ 
+ 
   }
 
   createMenuCategory (req, res, next) {
@@ -32,13 +44,13 @@ class Menu {
       $lookup: {
         from: 'menus',
         localField: '_id',
-        foreignField: 'category',
+        foreignField: 'category_id',
         as: 'menu'
       }
     }
     ]).then((err, response) => {
-      if (err) { res.json(err) }
-      res.json(response)
+      if (err) { return res.json(err) }
+      return res.json(response)
     })
   }
 
@@ -51,16 +63,28 @@ class Menu {
         as: 'category'
       }
     }]).then((err, response) => {
-      if (err) { res.json(err) }
-      res.json(response)
+      if (err) { return res.json(err) }
+     return res.json(response)
     })
   }
 
-  uploadfile (req, res, next) {
-    //    var file = upload.single('file')
-    console.log(req.body)
-    return res.status(201), res.json(req.body)
+  deleteCategory(req, res, next){
+    menucategory.remove({_id:req.params.id},function(err, task){
+      if(err)
+          return res.json(err)
+      return res.json(task)
+  })
   }
+
+  deleteMenuItem(req, res, next){
+    menu.remove({_id:req.params.id},function(err, task){
+      if(err)
+          return res.json(err)
+      return res.json(task)
+  })
+  }
+
+  
 }
 
 var menuObj = new Menu()

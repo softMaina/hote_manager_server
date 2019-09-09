@@ -1,8 +1,8 @@
 var mongoose = require('mongoose')
 var ObjectId = mongoose.Schema.Types.ObjectId
 var menuSchema = mongoose.Schema({
-  category: { type: mongoose.Schema.Types.ObjectId, ref: 'menucategory' },
-  title: { type: String },
+  category_id: { type: mongoose.Schema.Types.ObjectId, ref: 'menucategory' },
+  title: { type: String ,isRequired:true},
   description: { type: String },
   image: { type: String },
   price: { type: Number },

@@ -13,6 +13,8 @@ var table = require('./models/table/tableModel')
 var tableCategory = require('./models/table/tableCategoryModel')
 
 var indexRouter = require('./routes/index')
+var nStatic = require('node-static');
+var fileServer = new nStatic.Server('public');
 
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/menu', { useNewUrlParser: true })
 
@@ -26,7 +28,7 @@ app.use(logger('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
-app.use(express.static(path.join(__dirname, 'public')))
+
 
 app.use(function (req, res, next) {
   // CORS headers
@@ -42,6 +44,7 @@ app.use(function (req, res, next) {
 })
 
 app.use(indexRouter)
+app.use(express.static(path.join(__dirname, 'uploads')));
 
 // catch 404 and forward to error handler
 // app.use(function(req, res, next) {

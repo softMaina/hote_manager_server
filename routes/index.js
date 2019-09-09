@@ -9,10 +9,12 @@ var multerConfig = require('../config/multer')
 var router = express.Router()
 
 router.post('/api/v1/menucategory', menuController.createMenuCategory)
-router.post('/api/v1/addmenu', menuController.createMenu)
-
+router.post('/api/v1/addmenu',multerConfig.saveToUploads, menuController.createMenu)
 router.get('/api/v1/menucategories', menuController.getCategories)
 router.get('/api/v1/menu', menuController.getMenu)
+router.delete('/api/v1/deletemenucategory/:id', menuController.deleteCategory);
+router.delete('/api/v1/deletemenu/:id',menuController.deleteMenuItem);
+
 router.post('/api/v1/order', orderController.createOrder)
 router.get('/orders', orderController.getOrders)
 
