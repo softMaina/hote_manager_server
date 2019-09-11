@@ -36,14 +36,13 @@ class roomController {
   }
 
   createRoom (req, res, next) {
-    var requestobj = req.body
+    var requestobj = JSON.parse(req.body.body)
     var data = {
       title: requestobj.title,
       description: requestobj.description,
-      categoryid: requestobj.category,
+      category_id: requestobj.category_id,
       no_of_people: requestobj.no_of_people,
-      // image:req.file.filename,
-      image: 'none',
+      image:req.file.filename,
       cost: requestobj.cost
     }
     var room = new Room(data)
@@ -55,6 +54,7 @@ class roomController {
       res.statusMessage = 'Room created successfully'
       return res.status(201).json(response)
     })
+    // console.log('working')
   }
 
   updateRoom (req, res, next) {
@@ -86,11 +86,12 @@ class roomController {
       $lookup: {
         from: 'rooms',
         localField: '_id',
-        foreignField: 'categoryid',
+        foreignField: 'category_id',
         as: 'rooms'
       }
-    }
-    ]).then((err, response) => {
+    }])
+    // Room.find({})
+    .then((err, response) => {
       if (err) { return res.json(err) }
       return res.json(response)
     })
