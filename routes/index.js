@@ -9,18 +9,20 @@ var multerConfig = require('../config/multer')
 var router = express.Router()
 
 router.post('/api/v1/menucategory', menuController.createMenuCategory)
-router.post('/api/v1/addmenu',multerConfig.saveToUploads, menuController.createMenu)
+router.post('/api/v1/menuorder', menuController.order);
+router.post('/api/v1/addmenu', multerConfig.saveToUploads, menuController.createMenu)
 router.get('/api/v1/menucategories', menuController.getCategories)
 router.get('/api/v1/menu', menuController.getMenu)
+router.get('/api/v1/menuorders', menuController.getOrders);
 router.delete('/api/v1/deletemenucategory/:id', menuController.deleteCategory);
-router.delete('/api/v1/deletemenu/:id',menuController.deleteMenuItem);
+router.delete('/api/v1/deletemenu/:id', menuController.deleteMenuItem);
 
 router.post('/api/v1/order', orderController.createOrder)
 router.get('/orders', orderController.getOrders)
 
 // room routes
 router.get('/api/v1/getRooms', roomController.getRooms)
-router.post('/api/v1/saveRooms',multerConfig.saveToUploads, roomController.createRoom)
+router.post('/api/v1/saveRooms', multerConfig.saveToUploads, roomController.createRoom)
 router.post('/api/v1/saveRoomCategory', roomController.createCategory)
 router.put('/api/v1/updateRoom/:id', roomController.updateRoom)
 router.put('/api/v1/updateRoomCategory/:id', roomController.updateCategory)
