@@ -20,6 +20,7 @@ class Menu {
     //   cost: requestobj.cost
     // }
     var ordermodel = new order(req.body)
+    console.log(req.body)
     ordermodel.save(function (err, response) {
       if (err) { return res.json(err) }
       return res.status(201), res.json(response)
@@ -27,11 +28,13 @@ class Menu {
   }
 
   getOrders(req, res, next) {
-    var orders = order.find({});
-    if (!order) {
-      return res.json("Error occured")
-    }
-    return res.json(orders)
+    order.find({}).then(response => {
+      return res.json(response)
+    }).catch(error => {
+      return res.json(error)
+    });
+
+
   }
 
   createMenu(req, res, next) {
@@ -51,8 +54,6 @@ class Menu {
       if (err) { return res.json(err) }
       return res.status(201), res.json(response)
     })
-
-
   }
 
   createMenuCategory(req, res, next) {
@@ -109,8 +110,6 @@ class Menu {
       return res.json(task)
     })
   }
-
-
 }
 
 var menuObj = new Menu()
